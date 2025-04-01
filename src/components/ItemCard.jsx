@@ -5,10 +5,10 @@ import { itemContext } from "../itemContext";
 import { useValue } from "../itemContext";
 // import { totalContext } from "../totalContext";
 
-function ItemCard({ name, price }) {
+function ItemCard({ id, name, price }) {
   // const { setItem, item, total, setTotal} = useValue();
   const {handleAdd, handleRemove} = useValue();
-  console.log("item", handleAdd, handleRemove);
+  // console.log("item", handleAdd);
   // const {total, setTotal} = useContext(totalContext);
 
   // const handleAdd = () => {
@@ -32,15 +32,16 @@ function ItemCard({ name, price }) {
       <div className={styles.itemName}>{name}</div>
       <div className={styles.itemPrice}>&#x20B9; {price}</div>
       <div className={styles.itemButtonsWrapper}>
-        <button className={styles.itemButton} onClick={() => handleAdd(price)}>
+        <button className={styles.itemButton} onClick={() => handleAdd({id, name, price})}>
           Add
         </button>
-        <button className={styles.itemButton} onClick={() => handleRemove(price)}>
+        <button className={styles.itemButton} onClick={() => handleRemove(id)}>
           Remove
         </button>
       </div>
     </div>
   );
 }
+
 
 export default ItemCard;
